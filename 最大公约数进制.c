@@ -13,8 +13,7 @@ int main(void){
     int a,b;
     int res;
     scanf("%d%d",&a,&b);
-    res=gcd(a,b);
-    printf("%#d %#x %#o",res,res,res);
+    printf("%#d %#x %#o",gcd(a,b),gcd(a,b),gcd(a,b));
 
     return 0;
 }
