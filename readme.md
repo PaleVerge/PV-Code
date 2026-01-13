@@ -1,8 +1,10 @@
-# This is a README file
-### This repository contains code and resources for my learing process of C programming.
+# 这是一个README文件。
+### 这个仓库中包含了我平时联系的部分代码，以及注意事项。
+### 仓库仍然在建设当中。
 
-## Tips:
-## for循环中的i要防止大于字符串长度
+## 下面为注意事项：
+
+## 对于for循环中的i，要防止大于字符串长度，如：
 ``c
 for (int i = 0; i < k && i < len; i++) {
    ;
