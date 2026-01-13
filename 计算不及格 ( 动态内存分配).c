@@ -17,7 +17,6 @@ int main(void){
 			if(a[i]<60){
 				printf("%d ",a[i]);
 			}
-			
 		}
 		putchar('\n');
 		free(a);

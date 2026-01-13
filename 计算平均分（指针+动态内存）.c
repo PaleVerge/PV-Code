@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+
 int main(void){
 	int n,* p;
 	double ave,sum;

@@ -9,9 +9,8 @@ int high(int * p){
 }
 int main(void){
 	int n;
-	int * p=&n;
 	while(scanf("%d",&n)!=EOF){
-		printf("%d\n",high(p));
+		printf("%d\n",high(&n));
 	}
 	return 0;
 }

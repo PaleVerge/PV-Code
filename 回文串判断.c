@@ -4,18 +4,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <ctype.h>
-int ishw(char ch[]);
 
-int main() {
-    char a[101];
-    fgets(a, sizeof(a), stdin);
-    if (ishw(a)) {
-        printf("Yes\n");
-    }else {
-        printf("N0\n");
-    }
-    return 0;
-}
 int ishw(char ch[]) {
     int len=(int)strlen(ch);
 
@@ -33,4 +22,15 @@ int ishw(char ch[]) {
     }
     return 1;
 }
+int main() {
+    char a[101];
+    fgets(a, sizeof(a), stdin);
+    if (ishw(a)) {
+        printf("Yes\n");
+    }else {
+        printf("N0\n");
+    }
+    return 0;
+}
+
 
