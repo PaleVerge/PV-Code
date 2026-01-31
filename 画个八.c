@@ -18,5 +18,6 @@ int main()
 			putchar('*');
 		putchar('\n');
 	}
+	getchar();
 	return 0;
 }
