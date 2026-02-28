@@ -8,6 +8,7 @@ int binsearch(int a[],int n,int s){
 	int result = -1;
     while(left <= right){ //必须小于等于，否则单个数据时无法查找
 		int mid = left+(right-left)/2; //防止溢出，我也不知道这是什么意思
+		//使用位运算符效率更高int mid = left+(right-left)>>1;
 		if(a[mid] == s){
 			result = mid; //查找第一次出现的位置
 			right = mid-1;

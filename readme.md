@@ -196,23 +196,27 @@ void shell_sort(int *x, int n)
 }
 ```
 
-### 冒泡排序
+### 下沉式冒泡排序
 ```c
 //输入:数组名称、数组中元素个数
-void bubble_sort(int *x, int n){
-  for (int h=n-1; h>0; h=k) /*循环到没有比较范围*/
-  {
-    for (int j=0, k=0; j<h; j++) /*每次预置k=0,循环扫描后更新k*/
-    {
-      if (*(x+j) > *(x+j+1)) /*大的放在后面,小的放到前面*/
-        {
-          t = *(x+j);
-          *(x+j) = *(x+j+1);
-          *(x+j+1) = t; /*完成交换*/
-          k = j; /*保存最后下沉的位置。这样k后面的都是排序排好了的。*/
+//记录最后一次交换位置，动态缩小遍历范围
+void bubble_sort_optimized(int *arr, int arr_len) {
+    // 外层循环：unsorted_right 表示当前未排序部分的右边界（初始为数组最后一个元素下标）
+    for (int unsorted_right = arr_len - 1; unsorted_right > 0; unsorted_right = last_swap_pos) {
+        //   current_idx: 当前遍历的下标
+        //   last_swap_pos: 记录本轮最后一次发生交换的下标（初始为0，若未交换则直接终止外层循环）
+        for (int current_idx = 0, last_swap_pos = 0; current_idx < unsorted_right; current_idx++) {
+            // 升序排序：前一个元素 > 后一个元素 则交换
+            if (*(arr + current_idx) > *(arr + current_idx + 1)) {
+                // 交换相邻元素（指针写法，等价于 arr[current_idx] 和 arr[current_idx+1]）
+                int tmp = *(arr + current_idx);
+                *(arr + current_idx) = *(arr + current_idx + 1);
+                *(arr + current_idx + 1) = tmp;
+                // 更新最后一次交换的位置：current_idx之后的元素已有序
+                last_swap_pos = current_idx;
+            }
         }
-      }
-  }
+    }
 }
 ```
 * 注意比较和交换的都是a[j]
@@ -221,14 +225,19 @@ void bubble_sort(int *x, int n){
 ## 查找
 ### 二分查找
 ```c
-//
+//从数组中找两个数，和等于m
+//F1：遍历+剩余二分
+//F2：双指针/尺取法O(n)
+
+//二分答案
+
 ```
 
 ### 高精度算法
 
 
   * C/C++用字符数组/字符串模拟，大数组尽量不要动态分配，尽量定义为全局静态数组。
-  * 字符数组占用空间小，整型数组为cahr的4倍。字符数组读入数据方便，scanf或gets计科，整型数组要用%1d逐个读取，存入整型数组每个元素当中。
+  * 字符数组占用空间小，整型数组为char的4倍。字符数组读入数据方便，scanf或gets计科，整型数组要用%1d逐个读取，存入整型数组每个元素当中。
 
 
   * 全局变量在编译的时候会自动初始化为0，局部变量不可以省略初始化。因此全局静态数组不需要初始化为0。
@@ -759,7 +768,20 @@ sort(vec.begin(),vec.end())
 ```
 
 
-# 常用函数
+# STL常用函数
+## 二分查找
+```cpp
+binary_sort(begin,end,x);//在有序数组中查找x
+
+lower_bound(begin,end,x);//在有序数组中查找第一个大于等于x的值，返回指向该元素的迭代器
+
+upper_bound(begin,end,x);//在有序数组中查找第一个大于x的值，返回指向该元素的迭代器
+lower_bound(begin,end,x) && =x//查找最后一个小于等于x的元素
+upper_bound(begin,end,x) 前一个&&=x//查找最后一个等于x的元素
+lower_bound(begin,end,x) 前一个//查找最后一个小于x的元素
+upper_bound(begin,end,x)-upper_bound(begin,end,x)//单调序列中x的个数
+//迭代器是地址，迭代器-a为下标
+```
 ## 全排列
 ```cpp
 vec.next_permutation()
@@ -844,4 +866,6 @@ int add(int a,int b=0){
 123 % (-10) = -13
 //按正数计算，结果加负号
 ```
+
+
 
