@@ -200,10 +200,9 @@ void shell_sort(int *x, int n)
 ```c
 //输入:数组名称、数组中元素个数
 void bubble_sort(int *x, int n){
-  int j, k, h, t;  
-  for (h=n-1; h>0; h=k) /*循环到没有比较范围*/
+  for (int h=n-1; h>0; h=k) /*循环到没有比较范围*/
   {
-    for (j=0, k=0; j<h; j++) /*每次预置k=0,循环扫描后更新k*/
+    for (int j=0, k=0; j<h; j++) /*每次预置k=0,循环扫描后更新k*/
     {
       if (*(x+j) > *(x+j+1)) /*大的放在后面,小的放到前面*/
         {

@@ -1,7 +1,8 @@
 #include <bits/stdc++.h>
 using namespace std;
-
-int binsearch(int a[],int n,int s){ //适用于单调的数据，不单调需要先排序
+//必须是顺序储存结构
+//必须是有序的数据，不单调需要先排序
+int binsearch(int a[],int n,int s){ 
     int left = 0;
     int right = n-1;
 	int result = -1;
