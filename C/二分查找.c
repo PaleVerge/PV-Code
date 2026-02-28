@@ -1,5 +1,5 @@
 #include<stdio.h>
-void sort(int a[],int n){
+void bublesort(int a[],int n){
 	for(int i=0;i<n-1;i++){
 		for(int j=0;j<n-1-i;j++){
 			if(a[j]<a[j+1]){
@@ -10,12 +10,16 @@ void sort(int a[],int n){
 		}
 	}
 }
-int BinSearch(int a[],int left,int right,int num){
+
+int BinSearch(int a[],int left,int right,int num){ //
 	int mid;
-	while(left<right){
-		mid=(left+right)/2;
+	int res=-1; //找不到默认返回-1
+
+	while(left <= right){
+		mid = left+(right-left)/2; //防止left+right溢出
 		if(a[mid]==num){
-			return mid;
+			res = mid;
+			right = mid-1; //找到第一个出现的位置
 		}else{
 			if(a[mid]<num){
 				left=mid+1;
@@ -24,11 +28,11 @@ int BinSearch(int a[],int left,int right,int num){
 			}
 		}
 	}
-	return -1;
+	return res;
 }
-int BinSearch_2(int a[],int left,int right,int num){
+int BinSearch_2(int a[],int left,int right,int num){ //递归算法，效率低下
 	int mid;
-	if(left<right){
+	if(left>right){
 		return -1;
 	}
 	mid=(left+right)/2;
@@ -48,7 +52,7 @@ int main(void){
 	for(int i=0;i<5;i++){
 		scanf("%d",&a[i]);
 	}
-	sort(a,5);
+	bublesort(a,5); //先排序
 	scanf("%d",&num);
 	BinSearch(a,0,4,num);
 	return 0;

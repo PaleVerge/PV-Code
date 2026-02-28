@@ -459,20 +459,20 @@ int *a = (int *)malloc(n * sizeof(int));
   ```
 
 
-## 负数取余计算
-```c
-123%(-10)=-13
-//按正数计算，结果加负号
-```
+
   
 ## ASCII码
-```数字0--48
-数字1--49
-数字2--50
-a--
-z--
-A--
-Z--
+```
+字符 -> ASCII码
+———————————————
+  0 ->  48    
+  1 ->  49
+  2 ->  50
+  a ->  97
+  z ->  122
+  A ->  65
+  Z ->  90    
+————————————————
 ```
 
 
@@ -571,12 +571,110 @@ reverse(str)//字符串反转
 
 # STL
 
+## queue
+先进先出
+可以通过队列取出，实现数组的反转
 ```cpp
-auto <map> map;
+
 ```
-关联容器，存放键值对，数据结构为红黑树
+## priority_quene
+先进先出，优先有序队列，默认从大到小
+
+## que
+双端队列
+
+## stack
+先进后出
+```cpp
+
+```
+
+## set
+存储唯一元素，默认使用升序排序
+内部使用红黑树实现，保持元素的有序性。
+插入重复元素时，set会自动忽略。
+时间复杂度O(log n)
+
+```cpp
+template <class Key,class Compare = less<Key>,class Allocator = allocator<Key>>
+//元素类型，元素之之间比较函数对象的类型（默认less按照元素的值进行比较），分配内存分配器类型
+class set;
+```
+```cpp
+insert()
+erase()
+find()
+lower_bound()
+upper_bound()
+equal_range() //返回一个范围，包含所有给定值的元素
+swap() //交换两个集合
+begin()
+end()
+empty()
+clear()
+size()
+rend()
+rbegin() //返回集合末尾位置的逆向迭代器
+
+set<int,greater<int>> myset;
+//修改比较方法1
+struct Mycompare{
+  bool operator()(const int& a,const int & b)const {
+    return a > b;
+  }
+};
+set<int ,Mycompare> myset;
+//修改比较方法2
+```
+
+
+## multiset
+允许存储重复的元素
+默认升须排序
+```cpp
+erase(x) //会删除全部相同的x元素
+erase(mst.find(x))//删除但一删除单一元素
+```
+## unordered_set
+无特定顺序，时间复杂度不稳定，使用哈希实现，只能储存不重复元素
+一般不使用
+
+## pair
+一个模板类，表示一对值的组合。
+可以将两个值组合在一起，传递储存和操作。
+位于utility头文件中。
+```cpp
+template <class T1,class T2>
+struct pair{
+  T1 first;
+  T2 second;
+  pair();
+  pair(const T1& x,const T2&y);
+  bool opeator==(const pair& rhs) const;
+  bool opeator!=(const pair& rhs) const;
+}
+```
+```cpp
+pair<int,double> p1(1,2.5);
+cout<<p1.first<<p1.second<<endl;
+```
+pair的嵌套
+```cpp
+pair <int,int> p1(2,3);
+pair <int,pair(int,int)>p2(1,p1);
+pair <int,pair(int,int)>p2(1,make_pair(4,5));
+```
+### pair自带的排序规则：
+按照first成员进行升序排序，若相等，按照sencond成员进行升序排序。
+## map
+* 关联容器，存放键值对，数据结构为红黑树
 Key 键
 T 值
+```cpp
+template <class Key,class T> ;
+class map
+```
+
 ```cpp
 .insert() //插入
 .erase()  //删除
@@ -592,36 +690,52 @@ make_pair(4,"abc")==={4,"abc"};
 
 
 ```cpp
-auto <mutimap> mutimap;
+template <class Key,class T> ;
+class mutimap;
 ```
 关联容器，可存放多个有相同键的键值对，数据结构为红黑树
 
 ```cpp
-auto <unordered_map> unordered_map;
+template <class Key,class T> ;
+class unordered_map;
 ```
 关联容器，储存键值对，不会根据键的顺序排序，而是哈希映射到储存桶
 * 极好的平均时间复杂度，极坏的最差时间复杂度
 
-## 全排列
+## list
+* 双向链表容器，插入和删除时间复杂度为O(1),访问和查找为O(n)，不适合频繁随机访问。
+* 以节点形式储存元素，用指针连接节点，使用频率不高
+* 具有双向性，可以在任意位置插入，删除和访问
+* 动态大小
+* 不连续存储
 ```cpp
-vec.next_permutation()
+template <class T,class Allocator = std::allocator<T>>
+class list;
+//容器中储存的元素类型，分配内存的分配器类型
 ```
-生成当前序列的下一个排列，若存在下一个排列，将当前序列更改为下一个排列，返回true；
-若已经是最后一个排列，将序列更改为第一个排列，返回false。
-
-
 ```cpp
-vec.prev_permulation()
+list <int> mylist;
+mylist.push_back(1);
+mylist.push_front(0);
+pop_bcak()
+pop_front()
+front() //返回链表第一个元素的引用
+back()  //返回链表最后一个元素的引用
+clear() //清空所有元素
+empty() //
+begin() //返回第一个元素的迭代器，可以++得到第二个元素的迭代器
+end()
+insert() 
+erase()
+...
 ```
-生成当前序列的上一个排列。
-若存在上一个排列，将当前序列更改为尚一个排列，返回true；
-若已经是第一个排列，将序列更改为最后一个排列，返回false。
 
 ## vector
-动态数组容器，存相同类型数据，位于标准库<vector>，处于万能头文件<bits/stdc++>当中。
-可以自动调整大小，动态分配空间。
-元素可以索引访问，0——size-1。可以用[]运算符或at()函数来访问元素。
-size()返回unsigned int类型，若数组为空，size()-1会得到很大的正数。可以先强制转换int，或者i < size();
+* 动态数组容器，存相同类型数据.
+* 位于标准库<vector>，处于万能头文件<bits/stdc++>当中。
+* 可以自动调整大小，动态分配空间。
+* 元素可以索引访问，0——size-1。可以用[]运算符或at()函数来访问元素。
+
 
 ```cpp
 push_back()//添加末尾元素
@@ -645,13 +759,27 @@ end()//指向最后一个元素之后位置的迭代器
 sort(vec.begin(),vec.end())
 ```
 
+
+# 常用函数
+## 全排列
+```cpp
+vec.next_permutation()
+```
+生成当前序列的下一个排列，若存在下一个排列，将当前序列更改为下一个排列，返回true；
+若已经是最后一个排列，将序列更改为第一个排列，返回false。
+
+
+```cpp
+vec.prev_permulation()
+```
+生成当前序列的上一个排列。
+若存在上一个排列，将当前序列更改为尚一个排列，返回true；
+若已经是第一个排列，将序列更改为最后一个排列，返回false。
 ## 排序
 ```cpp
 sort()
 ```
 位于algorithm
-
-
 ## 去重
 ```cpp
 unique()
@@ -660,8 +788,9 @@ unique()
 将重复元素移到末尾，并返回一个指向第一个重复元素的迭代器。
 最后使用erase()将重复元素删除。
 
-# 结构体
-定义一个结构体不需要前边加struct
+# C++特性
+## 结构体
+C++定义一个结构体不需要前边加struct
 可以定义成员函数，重载运算符
 ```cpp
 struct Point{
@@ -673,10 +802,17 @@ struct Point{
 }
 //创造新对象时初始化为(0,0)
 ```
-# 函数重载
+## 函数重载
 函数名可以相同，根据参数类型和参数个数来判断调用哪一个函数
-
-# 默认参数
+```cpp
+int add(int a,int b){
+  return a+b;
+}
+double add(double a,double b){
+  return a+b;
+}
+```
+## 默认参数
 ```cpp
 int add(int a,int b=0);
 ||
@@ -687,12 +823,26 @@ int add(int a,int b=0){
 放在函数声明或者函数定义处，不可以两处都放。
 默认参数必须放在最右边。
 在函数调用时，若没有对应参数，则使用默认参数。只能按照顺序，不能省略。
-# 匿名函数lumbda函数
+## 匿名函数
 
-
-# 小技巧
 ```cpp
-s [i]
-||
-s [i] != '\0'
+
 ```
+
+# 注意
+*
+  ```cpp
+  s [i]
+  ||
+  s [i] != '\0'
+  ```
+## size()数据类型
+* size()返回unsigned int类型，若数组为空，size()-1会得到很大的正数。
+* 可以先强制转换int，或者i < size();
+
+## 负数取余/取模计算
+```c
+123 % (-10) = -13
+//按正数计算，结果加负号
+```
+
