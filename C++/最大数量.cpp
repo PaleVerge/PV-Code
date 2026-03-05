@@ -2,9 +2,9 @@
 using namespace std;
 
 int main(){
-    int n,a,b;
-    scanf("%d%d%d",&n,&a,&b);
-    int i=n/(a+b);
-    printf("%d\n",i);
+    int n,a,b,i;
+    cin>>n>>a>>b;
+    i=n/(a+b);
+    cout<<i<<endl;
     return 0;
 }
