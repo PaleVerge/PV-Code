@@ -17,35 +17,83 @@
 # 📅 TODO List
 
   #### ✅ 缓冲区问题
-
   #### ✅ 二分查找
-
   #### ✅ 高精度算法
-
   #### ✅ 约瑟夫问题
 
-  #### ⚠️ 选择排序
+  #### ✅ 选择排序
+  #### ✅ 桶排序
+  #### ✅ 堆排序
+  #### ✅ 快速排序
+  #### ✅ 冒泡排序
 
-  #### ⚠️ 桶排序
-
-  #### ⚠️ 堆排序
-
-  #### ⚠️ 快速排序
-
-  #### ⚠️ 冒泡排序
-
-  #### ⚠️ 子串KMP算法
-
-  #### ⚠️ 二分查找
-
-  #### ⚠️ DFS
+  #### ✅ 二分查找
+  #### ⚠️ DFS基础回溯
+  #### ⚠️ DFS剪枝
+  #### ⚠️ BFS 
+  #### ⚠️ 记忆化搜索
 
   #### ⚠️ 红黑树
-
   #### ⚠️ 动态规划
+  #### ⚠️ 前缀和
+  #### ⚠️ 差分
+  #### ⚠️ 递归
+  #### ⚠️ 构造
+  #### ⚠️ 进制转换
+  #### ⚠️ 离散化
+  #### ⚠️ 位运算
+  #### ⚠️ 贪心
+  #### ⚠️ 双指针
+  
+  #### ⚠️ 点和线的关系
+  #### ⚠️ 点积和叉积
+  #### ⚠️ 二维计算几何基础
+  #### ⚠️ 计算集合基础
 
-##
-##
+  #### ⚠️ KMP字符串哈希
+  #### ⚠️ 字典树基础
+  #### ⚠️ tire
+  #### ⚠️ Manacher
+
+  #### ⚠️ 01背包
+  #### ⚠️ 动态规划基础：LCS/LIS/二维DP/线性Dp
+  #### ⚠️ 期望DP
+  #### ⚠️ 区间DP
+  #### ⚠️ 树形DP
+  #### ⚠️ 数位DP
+  #### ⚠️ 状压DP
+
+  #### ⚠️ 计算原理
+  #### ⚠️ 排列组合
+  #### ⚠️ 费马小定理逆元
+  #### ⚠️ 高斯消元
+  #### ⚠️ 素数筛选
+  #### ⚠️ 唯一分解定理
+  #### ⚠️ 行列式
+  #### ⚠️ 裴蜀定理
+  #### ⚠️ 欧拉函数欧拉降幂
+  #### ⚠️ 快速幂
+  #### ⚠️ 矩阵乘法整除同余GCDLCM
+  #### ⚠️ 素数朴素判定埃式筛选法
+
+  #### ⚠️ 分块基础
+  #### ⚠️ 普通莫队
+  #### ⚠️ 单调栈单调队列
+  #### ⚠️ 树形数据结构
+  #### ⚠️ 基础树上问题
+  #### ⚠️ 并查集基础
+  #### ⚠️ 带权并差集
+  #### ⚠️ 可撤销并并查集
+  #### ⚠️ ST表
+  #### ⚠️ 堆
+  #### ⚠️ 链表栈队列
+
+  #### ⚠️ 生成树
+  #### ⚠️ 拓扑排序
+  #### ⚠️ 最短路
+  #### ⚠️ 图的基础
+  
+
 
 # C部分
 ## 排序
@@ -68,6 +116,7 @@ void bucket_sort(int a[],int n){
 ```
 
 ### 选择排序
+时间复杂度：O(n^2)
 ```c 
 //大数沉底
 void select_sort(int a[],int n){
@@ -98,6 +147,8 @@ void select_sort(int a[],int n){
 ```
 
 ### 归并排序
+![alt text](clipboard_2026-03-05_22-22.png)
+核心思想：分治
 ```c
 void merge_sort(int a[],int l,int r){
 	if(l==r)return; //递归出口：当区间大小为1时，直接返回
@@ -106,18 +157,20 @@ void merge_sort(int a[],int l,int r){
 	merge_sort(int a[],l,mid);
 	merge_sort(int a[],mid+1,r);
 
-	
-	int pl=l,pr=mid+1,pb=l; //pl为左半边的下标,pr为右半边的下标，b为数组b的下标
-	
+	int pl=l,pr=mid+1,pb=l; 
+	//pl为左半边的下标,pr为右半边的下标，b为数组b的下标
+	//a: 1 | 3 | 5 | 7 | 2 | 5 | 7 | 8
+	//   l          mid              r
+
 	//将a[lr]一个个放入b[lr]当中：
 	while(pl<=mid || pr<=r){
 		if(pl>mid){ //左半边已经放完：
-			b[pb++]=a[pr++];
+			b[pb++]=a[pr++];//右边直接放
 		}else if(pr>r){ //右半边已经放完：
-			b[pb++]=a[pl++];
+			b[pb++]=a[pl++];//左边直接放
 		}else{
 			//两边都有元素，取个小的放到b里
-			if(a[pl]<a[pr]){
+			if(a[pl] < a[pr]){
 				b[pb++]=a[pl++];
 			}else{
 				b[pb++]=a[pr++];
@@ -130,16 +183,45 @@ void merge_sort(int a[],int l,int r){
 	}
 }
 ```
-
 ### 快速排序
-```c
-void quick_sort(int a[],){
+时间复杂度：O(nlogn)，不需要额外空间
+
+核心思想：分治
+![alt text](clipboard_2026-03-05_22-19.png)
+```cpp
+int Partition(int a[],int l,int r){
+	int pivot=a[r];//以a[r]为基准点，partition会将a[r]放到正确位置上
+	int i=l,j=r;
+
+	while(i<j){
+		while(i<j && a[i]<=pivot)i++;
+		//循环后，i>=j或者a[i]>pivot，==>说明找到了要交换的位置
+
+		while(i<j&&a[j]>=pivot)j--;
+		//循环后，i>=j或者a[i]<pivot，==>说明找到了要交换的位置
+
+		//若i<j,则存在a[j]<pivot
+		if(i<j)swap(a[i],a[j]);
+		//否则a[r]<=pivot,a[i]>=pivot
+		else swap(a[i],a[r];)
+	}
+}
+void quick_sort(int a[],int l,int r){
+	if(l<r){
+		int mid=Partition(a,l,r); //将区间内某个基准数放到正确的位置，并返回该位置
+
+		quick_sort(a,l,mid);//对基准点左边的数再执行快速排序
+		quick_sort(a,mid+1,r);//对基准点右边的数再执行快速排序
+	}
 
 }
 ```
 
 ### 插入排序
-* 输入:数组名称(即数组首地址)、数组中元素个数
+时间复杂度：O(n^2)
+输入:数组名称(即数组首地址)、数组中元素个数
+
+指针式写法：
 ```c
 void insert_sort(int *a, int n){
 	for (int i=1; i<n; i++) //i表示当前要确定的位置,下标从1开始因为一个数显然有序，不需要排序。
@@ -154,6 +236,7 @@ void insert_sort(int *a, int n){
 	}
 }
 ```
+数组式写法：
 ```c
 void insert_sort(int a[],int n){
 	for (int i=1; i<n; i++)//i表示当前要确定的位置,下标从1开始因为一个数显然有序，不需要排序。
@@ -211,44 +294,7 @@ void heap_sort(int *x, int n){
 }
 
 ```
-### 快速排序
-```c
-//输入:数组名称、数组中起止元素的下标
-void quick_sort(int *x, int low, int high)
-{
-int i, j, t;
-if (low < high) /*要排序的元素起止下标,保证小的放在左边,大的放在右边。这里以下标为low的元素为基准点*/
-{
-   i = low;
-   j = high;
-   t = *(x+low); /*暂存基准点的数*/
-   while (i<j) { /*循环扫描*/
-      while (i<j && *(x+j)>t) /*在右边的只要比基准点大仍放在右边*/
-        {
-         j--; /*前移一个位置*/
-        }
-    if (i<j) 
-      {
-         *(x+i) = *(x+j); /*上面的循环退出:即出现比基准点小的数,替换基准点的数*/
-         i++; /*后移一个位置,并以此为基准点*/
-      }
-    while (i<j && *(x+i)<=t) /*在左边的只要小于等于基准点仍放在左边*/
-    {
-     i++; /*后移一个位置*/
-    }
-    if (i<j)
-    {
-     *(x+j) = *(x+i); /*上面的循环退出:即出现比基准点大的数,放到右边*/
-     j--; /*前移一个位置*/
-    }
-   }
-   *(x+i) = t; /*一遍扫描完后,放到适当位置*/
-   quick_sort(x,low,i-1);   /*对基准点左边的数再执行快速排序*/
-   quick_sort(x,i+1,high);   /*对基准点右边的数再执行快速排序*/
-}
-}
 
-```
 ### 希尔排序
 ```c
 //输入:数组名称、数组中元素个数
@@ -269,7 +315,60 @@ void shell_sort(int *x, int n)
   }
 }
 ```
+### 冒泡排序
+```c
+#include<stdio.h>
 
+int bubble_sort_1(int a[],int n){
+	int swap_count=0; //冒泡次数计数器
+	for(int i=0;i<n-1;i++){
+		int swapped=0; //是否交换标记
+		for(int j=0;j<n-1-i;j++){
+			if(a[j]>a[j+1]){  //升序排序
+				int tmp = a[j];
+				a[j] = a[j+1];
+				a[j+1] = tmp;
+				swapped=1; //已交换
+				swap_count++;
+			}
+		}
+		if(!swapped)break; //若该轮未交换，则已经顺序，提前结束生剩余的轮
+	}
+	return swap_count;
+}
+//仅写法不同，效率相同，遍历方向不同
+void bubble_sort_2(int a[]，int n) {
+	int swap_count=0;
+    for (int i=n-1;i>0;i--) {
+		int swapped=0;
+        for (int j=0;j<i;j++) {
+            if (a[j]>a[j+1]) {  //升序排序
+                int tmp=a[j];
+                a[j]=a[j+1];
+                a[j+1]=tmp;
+				swapped=1;
+				swap_count++;
+            }
+        }
+		if(!swapped)break;
+    }
+	return swap_count;
+}
+int main(void){
+	int n,a[101];
+	while(scanf("%d",&n)!=EOF){ //多组数据输入，n为单组数据个数
+		for(int i=0;i<n;i++){
+			scanf("%d",&a[i]);
+		}
+		bubble_sort(a,n);
+		for(int i=0;i<n;i++){
+			printf("%d ",a[i]);
+		}
+		printf("\n");
+	}
+	return 0;
+}
+```
 ### 下沉式冒泡排序
 ```c
 //输入:数组名称、数组中元素个数
@@ -577,7 +676,7 @@ c++万能头文件
     hex //设置基数为16，后面16进制输出
     oct //设置基数为8，后面8进制输出
     setw(n) //设置域宽为n，设置一次使用一次
-    setfill(c) //设置填充字符为c
+    setfill(c) //设置填充字符为c,持久性设置
     setiosflags(ios::left/right)//左对齐，右对齐
     setiosflags(ios::skipws/uppercase/lowercase)//忽略前导空白
     setiosflags(ios::uppercase/lowercase)//16进制大写输出，16进制小写输出
