@@ -2,13 +2,16 @@
 #include <iomanip>
 using namespace std;
 using ll = long long;
+const int N =1e5+9;
 
+ll dp[N];
 
 ll fib(int n){
+	if(dp[n])return dp[n]; //带备忘录的递归
 	if(n==1 || n==2){ //if(n <= 2){
 		return 1;
 	}else{
-		return fib(n-1)+fib(n-2);
+		return dp[n] = fib(n-1)+fib(n-2);
 	}
 	
 }
