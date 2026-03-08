@@ -407,7 +407,30 @@ void bubble_sort_optimized(int *arr, int arr_len) {
 ```
 
 ## 前缀和
+* prefix表示前缀和，由一个用户输入的数组生成
+* prefix为预处理算法，只适用于静态数组，一边修改一边查询需要使用树状数组或线段树等
 
+prefix[i]=E(i,j=1)a[j]
+prefix[i]=E(i-1,j=1)a[j] + a[i]
+```cpp
+//可以用于快速生成prefix：
+a[0]=0; 
+for(int i=1;i<=n;i++){
+	prefix[i]=prefix[i-1]+a[i]
+}
+
+```
+ 
+```cpp
+//可以O(1)的求数组a的一段区间的和
+sum(l,r)=prefix[r]-prefix[l-1]
+```
+
+```cpp
+for(int i=1;i<=n;i++){
+  prefix[i]=prefix[i-1]+a[i];
+}
+```
 ## 差分
 
 ## 递归
@@ -422,11 +445,12 @@ void bubble_sort_optimized(int *arr, int arr_len) {
 * 适合处理大部分动态规划问题
 * 
 [斐波那契数列](C++/递归/fib（递归）.cpp)
+！！！！！
 
 ## 构造
 
 ## 进制转换
-                                                         
+                                                          
 ## 离散化
 
 ## 位运算
@@ -1093,4 +1117,7 @@ int add(int a,int b=0){
 ## 试除法
 x位平方数，根x位整数，因子个数位奇数
 因数个数位偶数个=>不是完全平方数
+
+## 取模运算
+设计负数和减法取模时，+p再取模
 
