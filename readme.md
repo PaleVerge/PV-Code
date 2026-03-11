@@ -481,7 +481,42 @@ diff[r+1]-=x;
 ## 进制转换
                                                           
 ## 离散化
+把无限空间中的有限的个体映射到有限的空间中去，一次提高算法的时空效率。  
+将数组的值域雅安所，更加关心素元素的大小关系。
+要求数组内部有序，一般是去重的。
+可以直接通过离散化下标得到值，也能通过值得到离散化下标（通过二分实现）
+```cpp
+#include <bits/stdc++.h>
+const int N=1e5_7;
 
+vector<int> L;
+int a[N];
+
+int getidx(int x){
+  return lower_bound(L.begin(),L.end(),x)-L.begin();
+}
+int main(){
+  int n;cin>>n;
+  for(int i=0;i<n;i++){
+    cin<<a[i];
+  }
+  
+  for(int i=0;i<n;i++){
+    L.push_back(a[i]);
+  }
+  sort(L.begin(),L.end()); 
+  for(int i=0;i<n;i++){
+    L.erase(unique(L.begin(),L.end()),L.end());
+  }
+  cout<<"离散化数组为："<<"\n";
+  for(const auto&i:L)cout<<a[i]<<' ';
+
+  int val;cin>>val;
+  cout<<getind(val)<<'\n';
+  return 0;
+}
+```
+离散化不会单独考察，一般结合树状数组，线段树，二维平面的计算几何等一起考察。
 ## 位运算
 
 ## 贪心
