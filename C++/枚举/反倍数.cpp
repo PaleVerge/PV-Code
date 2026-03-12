@@ -1,3 +1,4 @@
+//蓝桥152
 #include<bits.stdc++.h>
 using namespace std;
 
@@ -10,7 +11,7 @@ int main(){
             ans++;
         }
     }
-    
+
     cout<<ans<<'\n';
     return 0;
 }
