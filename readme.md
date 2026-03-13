@@ -1,11 +1,6 @@
 # 这是一个README文件
 ### 仓库仍然在建设当中……
 
-![PaleVerge's Stats](https://github-readme-stats-eight-theta.vercel.app/api?username=PaleVerge&show_icons=true&theme=material-palenight)
-
-![Top Langs](https://github-readme-stats-eight-theta.vercel.app/api/top-langs/?username=PaleVerge&layout=compact&theme=material-palenight)
-
-![Readme Card](https://github-readme-stats-eight-theta.vercel.app/api/pin/?username=PaleVerge&repo=PV-Code&theme=material-palenight)
 # 🚀 图  例
 
   #### ✅ 已完成 
