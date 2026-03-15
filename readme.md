@@ -111,7 +111,7 @@ void dfs(int dep){
     for(int i=1;i<=n;++i)cout<<a[i]<<' ';
     return ;
   }
-  for(int i=1;i<=n;++i){
+  for(int i=1;i<=n;++i){ //枚举范围
     if(vis[i])continue; //排除不合法的路径
 
     vis[i]=true;//修改状态
