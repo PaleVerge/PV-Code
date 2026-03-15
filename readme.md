@@ -97,7 +97,33 @@
 # C部分
 ## 搜索
 ## DFS回溯
+![](image-1.png)
 
+![alt text](image-2.png)
+![alt text](image-3.png)
+```cpp
+//求1-n的全排列
+const int N=1e5;
+int a[N]
+bool vis[N];  //用来表示数字i是否被使用过
+void dfs(int dep){
+  if(dep==n+1){ //深度到达n+1,已经搜索完毕，直接输出结果
+    for(int i=1;i<=n;++i)cout<<a[i]<<' ';
+    return ;
+  }
+  for(int i=1;i<=n;++i){
+    if(vis[i])continue; //排除不合法的路径
+
+    vis[i]=true;//修改状态
+    a[dep]=i;
+
+    dfs(dep+1); //下一层
+
+    vis[i]=false; //恢复现场
+    //a[dep]=0;可以省略
+  }
+}
+```
 ### DFS剪枝
 
 ### 记忆化
