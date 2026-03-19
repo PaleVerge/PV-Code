@@ -940,8 +940,9 @@ str1.compare(str2) // < > =
 s1.insert(a,s2,a2,n2)
 
 s1.erase(a，n)//无参数，全部清除
-s1.at()
-s1.append()
+
+s1.at() //用法相当于索引，没有越界风险
+
 //字符串遍历,循环枚举下标auto
     //修改无效，i为拷贝
     for(auto i : s){
