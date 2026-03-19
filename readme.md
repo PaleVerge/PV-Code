@@ -937,6 +937,11 @@ str.repalce(a,n,"xxx")
 str1.compare(str2) // < > =
 //字符串比较，按照字典序比较，不看长度，从小到大逐个比较
 
+s1.insert(a,s2,a2,n2)
+
+s1.erase(a，n)//无参数，全部清除
+s1.at()
+s1.append()
 //字符串遍历,循环枚举下标auto
     //修改无效，i为拷贝
     for(auto i : s){
