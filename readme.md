@@ -26,9 +26,7 @@
 #### ⚠️ 位运算
 #### ⚠️ 贪心
 #### ⚠️ 双指针
-
-## 🛠️ 模拟
-#### ✅ 约瑟夫问题
+#### 🛠️ 模拟
 
 ## 🛠️ 排序
 #### ✅ 选择排序
@@ -192,7 +190,42 @@ void dfs(int dep){
 ### DFS剪枝
 
 ### 记忆化
+将搜索过程中会重复计算而结果相同的部分保存下来，作为一个状态，
+下次访问到这个状态时直接将这个子搜索的结果返回，而不需要重新计算一遍
 
+通常是同数组或map来记忆化，下表一般和dfs的参数表对应。
+
+需要保证重复计算的结果是相同的，否则可能产生数据失真。
+
+```cpp
+#include <iostream>
+#include <iomanip>
+using namespace std;
+using ll = long long;
+const int N =1e5+9;
+
+ll dp[N];
+
+ll fib(int n){
+	if(dp[n])return dp[n]; //带备忘录的递归
+	if(n==1 || n==2){ //if(n <= 2){
+		return 1;
+	}else{
+		return dp[n] = fib(n-1)+fib(n-2);
+	}
+	
+}
+int main(){
+	int n;
+	cin>>n;
+
+	for(int i=1;i<=n;i++){
+		cout<<fib(i)<<endl;
+	}
+	return 0;
+}
+ 
+```
 ## 排序
 ### 桶排序
 ```c
@@ -554,7 +587,7 @@ for(int i=1;i<=n;i++){
 diff[l]+=x;
 diff[r+1]-=x;
 ```
-[text](C++/差分/差分-区间更新.cpp)
+[text](C++/基础算法/差分/差分-区间更新.cpp)
 
 ## 递归
 * 递归终止条件（基本情况）+递归表达式（递归调用）
@@ -567,7 +600,7 @@ diff[r+1]-=x;
 * 适合处理线性动态规划问题，问题的规模没有明显的缩减，需要特定的迭代次数
 * 适合处理大部分动态规划问题
 * 
-[斐波那契数列](C++/递归/fib（递归）.cpp)
+[斐波那契数列](C++/搜索/DFS/记忆化/fib（递归）.cpp)
 
 ！！！！未完待续！！！！
            
@@ -1070,6 +1103,12 @@ T 值
 ```cpp
 template <class Key,class T> ;
 class map
+
+map<string,string>mp={
+    {},
+    {}
+};
+
 ```
 
 ```cpp
