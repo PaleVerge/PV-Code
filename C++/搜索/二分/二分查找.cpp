@@ -3,22 +3,17 @@ using namespace std;
 //必须是顺序储存结构
 //必须是有序的数据，不单调需要先排序
 int binsearch(int a[],int n,int s){ 
-    int left = 0;
-    int right = n-1;
+    int left = 0,right = n-1;
 	int result = -1;
     while(left <= right){ //必须小于等于，否则单个数据时无法查找
-		int mid = left+(right-left)/2; //防止溢出，我也不知道这是什么意思
-		//使用位运算符效率更高int mid = left+(right-left)>>1;
+		int mid = left+((right-left)>>2); //防止溢出+位运算符效率更高
 		if(a[mid] == s){
 			result = mid; //查找第一次出现的位置
-			right = mid-1;
-		}else{
-            if(a[mid] > s){
+			right = mid-1;// 继续向左找，看有没有更靠前的目标值
+		}else if(a[mid] > s){
                 right = mid-1;
-            }
-            if(a[mid] < s){
+		}else{
                 left = mid+1;
-            }
         } 
     }
 	return result; 
