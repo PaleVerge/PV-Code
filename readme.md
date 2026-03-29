@@ -197,7 +197,7 @@ void dfs(int dep){
 
 需要保证重复计算的结果是相同的，否则可能产生数据失真。
 
-```cpp
+```cpp 
 #include <iostream>
 #include <iomanip>
 using namespace std;
@@ -600,7 +600,7 @@ diff[r+1]-=x;
 * 适合处理线性动态规划问题，问题的规模没有明显的缩减，需要特定的迭代次数
 * 适合处理大部分动态规划问题
 * 
-[斐波那契数列](C++/搜索/DFS/记忆化/fib（递归）.cpp)
+[斐波那契数列](C++/基础算法/递归/fib（递归）.cpp)
 
 ！！！！未完待续！！！！
            
