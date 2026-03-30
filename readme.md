@@ -3,11 +3,11 @@
 
 # 🚀 图  例
 
-  #### ✅ 已完成 
+#### ✅ 已完成
 
-  #### ⚠️ 未完成
+#### ⚠️ 未完成
 
-  #### 🛠️ 待处理
+#### 🛠️ 待处理
 
 # 📅 TODO List
 
@@ -550,7 +550,7 @@ for(int i=1;i<=n;i++){
 }
 
 ```
- 
+
 ```cpp
 //可以O(1)的求数组a的一段区间的和
 sum(l,r)=prefix[r]-prefix[l-1]
@@ -629,7 +629,83 @@ diff[r+1]-=x;
 首先确定解空间的维度，及问题中需要枚举的变量个数。
 
 ## 双指针
+用于数组或字符串中查找/匹配/排序/移动
+一般用两个变量表示下标
+### 对撞指针
+* left和right分别指向序列的第一个元素和最后一个元素
+* l不断递增，r不断递减，直到相撞或者错开或者满足其他特殊条件
+* 常用于解决有序数组或者字符串问题
+eg.回文串判断
+```cpp
+#include <bits/stdc++.h>
+using namespace std;
+const int N=1e6+7;
+int main(){
+	char s[N];
+	ios::sync_with_stdio(0)；
+	cin.tie(0),cout.tie(0);
+	
+	cin>>s+1;
+	int l=1,r=strlen(s+1);
+	bool ans=true;
+	while(l<r){
+		if(s[l]!=s[r])ans=false;
+		l++,r--;
+	}
+	cout<<(ans?'Y':'N')<<endl;
+	return 0;
+}
+```
+### 快慢指针
+* 两个指针从同一侧开始便利序列，而且移动的补偿一个快一个慢
+* 快指针为r，满指针为l
+* 两个指针以不同速度不同策略一拆散，直到快指针移动到数组尾端，或者两只真相交/其他特殊条件
+* 使用两个指针，一般l=1，r=0 ，初始区间[l,r]=[1,0]表示空区间
+eg.1372美丽的区间
+```cpp
+#include <bits/stdc++.h>
+using namespace std;
+const int N=1e6+7;
 
+int main(){
+	ios::sync_with_stdio(0)；
+	cin.tie(0),cout.tie(0);
+	
+	int n,S;cin>>n>>S;
+	for(int i=1,j=0,sum=0;i<=n;++i){
+		//区间不合法，移动指针||j有移动空间且没有比s大，移动指针
+		while(i>j ||(j+1<=n&&sum<S))sum+=a[++j];
+		if(sum>=S)ans=min(ans,j-i-1);//和满足条件，更新答案，更新答案最小，j-1-i为此时区间大小
+		sum-=a[i];
+	}
+	//ans>n不存在，输出0
+	cout<<(ans>n?0:ans)<<'\n';
+	return 0;
+}
+```
+eg.1621挑选子串
+```cpp
+#include <bits/stdc++.h>
+using namespace std;
+const int N=2e5+7;
+int a[N];
+int main(){
+	ios::sync_with_stdio(0)；
+	cin.tie(0),cout.tie(0);
+	
+	int n,m,k;cin>>n>>m>>k;
+	for(int i=1;i<=n;++i)cin>>a[i];
+	
+	for(int i=1,j=0,cnt=0;i<=n;++i){
+		//区间不合法，移动指针||j有移动空间且没有比s大，移动指针
+		while(i>j ||(j+1<=n&&cnt<k))cnt+=(a[++j]>=a);
+		if(cnt>=k)ans+=n -i-1;
+		cnt-=(a[i]>=n);
+	}
+	cout<<ans<<'\n';
+	return 0;
+}
+```
 ## 构造
 
 ## 位运算
@@ -691,7 +767,7 @@ for(int i=0;i<n;i++){
   * 1. 数据对齐：正数个位对其，实数小数点对齐。字符串反转
   * 2. 字符串转换
   * 3. 非有效数据置零（读入前进行）
-  
+
   ```c
   a[i]=0; 
   a[i]='\0';
@@ -704,6 +780,7 @@ for(int i=0;i<n;i++){
   * 高精度/单精度
   * 单精度/高精度
     
+
   计算方法：以字符串接受高精度，转换为数字后储存在字符数组中，从高位到低位处理，模拟除法计算。
 
 
@@ -733,7 +810,7 @@ for (int i = 0; i < k && i < len; i++) {
     ```
 
   </details>
-  
+
 
 ### 去除fgets读取字符串末尾的换行符
 
@@ -879,7 +956,7 @@ int *a = (int *)malloc(n * sizeof(int));
     ```c
       int temp[10]; // 辅助数组
       int i;
-
+    
       // 1. 先把后 n 个元素存入 temp 的前面
       for (i = 0; i < n; i++) {
       temp[i] = a[10 - n + i];
@@ -1093,7 +1170,7 @@ pair的嵌套
 pair <int,int> p1(2,3);
 pair <int,pair(int,int)>p2(1,p1);
 pair <int,pair(int,int)>p2(1,make_pair(4,5));
-``` 
+```
 pair自带的排序规则：
 按照first成员进行升序排序，若相等，按照sencond成员进行升序排序。
 ### map
@@ -1320,5 +1397,5 @@ x位平方数，根x位整数，因子个数位奇数
 ## 字符串字面量的指针偏移
 ```cpp
 cout<<a[i]<<" \n"[i == n];//i==n时返回1,取\n;否则返回0,取" ";
-```        
+```
 
