@@ -190,7 +190,7 @@ void dfs(int dep){
 ### DFS剪枝
 
 * 将搜索过程中不必要的部分剔除
-* 往往险些一个暴力搜索，然后找到某些特殊的数学或者逻辑关系，通过他们的约束让搜索树尽可能浅而小，从而降低时间复杂度
+* 往往先写一个暴力搜索，然后找到某些特殊的数学或者逻辑关系，通过他们的约束让搜索树尽可能浅而小，从而降低时间复杂度
 
 
 
@@ -238,42 +238,42 @@ int main(){
 ```
 
 ```c++
-//2942数字王国之军训排队
-#include <bits/stdc++.h>
-using namespace std;
-const int N=15 ;//
-int a[N],n;
-vector<int> v[N];
-bool dfs(int cnt,cin dep){
-    if(dep==n+1){  
-        return true;
-    }
-    //枚举每个人所属的队伍
-    bool tag=true;
-        for(const auto &j:v[i])if(a[dep]%j==0){
-         tag=false;
-            break;
+    //2942数字王国之军训排队
+    #include <bits/stdc++.h>
+    using namespace std;
+    const int N=15 ;//
+    int a[N],n;
+    vector<int> v[N];
+    bool dfs(int cnt,cin dep){
+        if(dep==n+1){  
+            return true;
         }
-        if(!tag)continue;
-    for(int i=1;i<=cnt;++i){
-        v[i].pushback(a[dmp]);
-        if(dfs(cnt,dep+1))return true;
-        //恢复现场
-        v[i].pop_back();
-    }
-}
-int main(){
-    cin>>n;
-    for(int i=1;i<=n;++i)cin>>a[i];
-    sort(a+1,a+1+n);
-  	for(int i=1;i<=n;++i){
-        if(dfs(i,1)){
-            cout<<i<<'\n';
-            break;
+        //枚举每个人所属的队伍
+        bool tag=true;
+            for(const auto &j:v[i])if(a[dep]%j==0){
+             tag=false;
+                break;
+            }
+            if(!tag)continue;
+        for(int i=1;i<=cnt;++i){
+            v[i].pushback(a[dmp]);
+            if(dfs(cnt,dep+1))return true;
+            //恢复现场
+            v[i].pop_back();
         }
     }
-    return 0;
-}
+    int main(){
+        cin>>n;
+        for(int i=1;i<=n;++i)cin>>a[i];
+        sort(a+1,a+1+n);
+        for(int i=1;i<=n;++i){
+            if(dfs(i,1)){
+                cout<<i<<'\n';
+                break;
+            }
+        }
+        return 0;
+    }
 ```
 
 
@@ -286,34 +286,33 @@ int main(){
 
 需要保证重复计算的结果是相同的，否则可能产生数据失真。
 
-```cpp 
-#include <iostream>
-#include <iomanip>
-using namespace std;
-using ll = long long;
-const int N =1e5+9;
-
-ll dp[N];
-
-ll fib(int n){
-	if(dp[n])return dp[n]; //带备忘录的递归
-	if(n==1 || n==2){ //if(n <= 2){
-		return 1;
-	}else{
-		return dp[n] = fib(n-1)+fib(n-2);
-	}
-	
-}
-int main(){
-	int n;
-	cin>>n;
-
-	for(int i=1;i<=n;i++){
-		cout<<fib(i)<<endl;
-	}
-	return 0;
-}
- 
+```c++
+    #include <iostream>
+    #include <iomanip>
+    using namespace std;
+    using ll = long long;
+    const int N =1e5+9;
+    
+    ll dp[N];
+    
+    ll fib(int n){
+        if(dp[n])return dp[n]; //带备忘录的递归
+        if(n==1 || n==2){ //if(n <= 2){
+            return 1;
+        }else{
+            return dp[n] = fib(n-1)+fib(n-2);
+        }
+        
+    }
+    int main(){
+        int n;
+        cin>>n;
+    
+        for(int i=1;i<=n;i++){
+            cout<<fib(i)<<endl;
+        }
+        return 0;
+    }
 ```
 
 ## 排序
