@@ -6,7 +6,7 @@ int binsearch(int a[],int n,int s){
     int left = 0,right = n-1;
 	int result = -1;
     while(left <= right){ //必须小于等于，否则单个数据时无法查找
-		int mid = left+((right-left)>>2); //防止溢出+位运算符效率更高
+		int mid = left+((right-left)>>1); //防止溢出+位运算符效率更高
 		if(a[mid] == s){
 			result = mid; //查找第一次出现的位置
 			right = mid-1;// 继续向左找，看有没有更靠前的目标值

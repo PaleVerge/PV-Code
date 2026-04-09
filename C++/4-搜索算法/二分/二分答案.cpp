@@ -8,7 +8,7 @@ using namespace std;
 int bin_an(int a[],int n,int s){
     int left=0,right=n-1;
     while(left<=right){
-        int mid=left+(right-left)>>1;
+        int mid=left+((right-left)>>1);
         if(a[mid]>=s){
             right=mid;
         }else{
