@@ -15,10 +15,13 @@ ll qmi(ll a,ll b,ll p){
     }
     return ans;
 }
+ll inv(ll n){
+    return qmi(n,p-2,p);
+}
 int main(){
     using std::cin,std::cout,std::endl;
-    ll a,b;
-    cout<<"请输入底数和指数:";
-    cin>>a>>b;
-    cout<<a<<"的"<<b<<"次方为:"<<qmi(a,b,p)<<endl;
+    int n;
+
+    cin>>n;
+    cout<<inv(n)<<endl;
 }
