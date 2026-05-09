@@ -3,13 +3,13 @@
 //
 #include <iostream>
 using ll=long long;
-ll qmi(ll a,ll b){
+ll qmi(ll a,ll b,ll p){
     ll ans=1;
     while (b){
         if (b&1){
-            ans=ans*a;
+            ans=ans*a%p;
         }
-        a=a*a,b>>=1;
+        a=a*a%p,b>>=1;
     }
     return ans;
 }
