@@ -6,26 +6,42 @@ using namespace std;
 class matrix{
 private:
     int row,col;
-    int *p;
+    int **pp;
 public:
     matrix(int m,int n){
         row=m;
         col=n;
-        =
-        new p[m][n];
+        pp=new int *[row];
+		for(int i=0;i<row;++i){
+            pp[i]=new int[col];
+		}
+    }
+    ~matrix(){
+        for(int i = 0; i < row; ++i)
+            delete[] pp[i];
+        delete[] pp;
     }
     void input(){
-
+        for (int i=0;i<row;++i){
+            for (int j=0;j<col;++j){
+                cin>>pp[i][j];
+            }
+        }
     }
     int at(int i){
-
+        return pp[(i-1)/col][(i-1)%col];
     }
     int at(int i,int j){
-
-
+        return pp[i-1][j-1];
     }
     int sum(){
-
+        int sum=0;
+        for (int i=0;i<row;++i){
+            for (int j=0;j<col;++j){
+                sum+=pp[i][j];
+            }
+        }
+        return sum;
     }
 };
 int main(){
