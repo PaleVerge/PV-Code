@@ -16,12 +16,12 @@ public:
 
 class triangle :public figure{
 public:
-    tritangle(double _width,double _height):figure(_width,_height){}
+    triangle(double _width,double _height):figure(_width,_height){}
     double area(){
         return (height*width/2);
     }
     void display(){
-        cout<<fixed<<setprecision(2)<<"I am a tritangle. The value of width is "<<width<<", the height is "<<height;
+        cout<<fixed<<setprecision(0)<<"I am a trtangle. The value of width is "<<width<<", the height is "<<height<<'.';
     }
 };
 class rectangle :public figure{
@@ -31,7 +31,7 @@ public:
         return (height*width);
     }
     void display(){
-        cout<<fixed<<setprecision(2)<<"I am a rectangle. The value of width is "<<width<<", the height is "<<height;
+        cout<<fixed<<setprecision(0)<<"I am a rectangle. The value of width is "<<width<<", the height is "<<height<<'.';
     }
 };
 int main()
