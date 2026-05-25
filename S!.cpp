@@ -7,7 +7,7 @@ class goods{
 		static int next=0;
 	public:
 		goods(){
-			id=next++:
+			id=next++;
 		}
 		void display(){
 			cout<<"goodsID="<<id<<' '<<"goodsName="<<name<<endl;
