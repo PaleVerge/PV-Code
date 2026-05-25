@@ -1,37 +1,26 @@
-#include "iostream"
-using namespace std;
-class point
-{
-	public:
-		point(int xVal=0,int yVal=0);
-		void setX(int xVal);
-		void setY(int yVal);
-		int getX();
-		int getY() ;
-	private:
-		int x,y;	
-	
- } ;
- 
- point::point(int xVal,int yVal):x(xVal),y(yVal)
- {
- 	
- }
-void  point::setX(int xVal)
-{
-	x=xVal;
-	
-}
-void  point::setY(int yVal)
-{
-	y=yVal;
-}
-int  point::getX()
-{
-	return x;
-}
-int  point::getY() 
-{
-	return y;
-}
+#include <iostream>
 
+using namespace std;
+struct stu{
+	int sNo;
+	string sName;
+};
+int main(){
+//	struct stu s,*ps=&s;
+//	
+//	s.sNo=1;
+//	cout<<s.sNo<<endl;
+//	
+//	(*ps).sNo=2;
+//	cout<<(*ps).sNo<<endl;
+//	
+//	ps->sNo=3;
+//	cout<<ps->sNo<<endl;
+	int *pArr[3];
+	for(int i=0;i<3;++i){
+		for(int j=0;j<4;++j){
+			cin>>pArr[i][j];
+		}
+	}
+	return 0;
+}
