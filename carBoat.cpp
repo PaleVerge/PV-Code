@@ -1,49 +1,51 @@
-#include<iostream>//c++标准的输入和输出流
-using namespace std;//引用标准的名空间std
-class vehicle
-{
-public:
-	vehicle(int _weight);
-	void setWeight(int _weight);
-	void showMe();
-protected:
-	int weight;
+#include<iostream>
+using namespace std;
+
+class vehicle{
+	protected:
+		int weight;
+	public:
+		vehicle(int _weight){
+			weight = _weight;
+		}
+		void setWeight(int _weight){
+			weight = _weight;
+		}
+		void showMe(){
+			cout << "I am an vehicle, my weight is " << weight<<endl;
+		}
 };
-vehicle::vehicle(int _weight)
-{
-	weight = _weight;
-}
-void vehicle::setWeight(int _weight)
-{
-	weight = _weight;
-}
-void vehicle::showMe()
-{
-	cout << "I am an vehicle, my weight is " << weight<<endl;
-}
-class car : public vehicle
-{
-public:
-	car(int _weight, int _aird);
-	void showMe();
-private:
-	int aird;
+
+class  car : virtual public vehicle{
+	private:
+		int aird;
+	public:
+		car(int _weight, int _aird):vehicle(_weight), aird(_aird){}
+		void showMe(){
+			cout << "I am a car, my weight is " << weight << endl;
+		}
 };
-car::car(int _weight, int _aird) :vehicle(_weight), aird(_aird){}
-void car::showMe()
-{
-	cout << "I am a car, my weight is " << weight << endl;
-}
-class boat : public vehicle
-{
-public:
-	boat(int _weight, float _tonnage);
-	void showMe();
-private:
-	float tonnage;
+
+class boat : virtual public vehicle{
+	private:
+		float tonnage;
+	public:
+		boat(int _weight, float _tonnage):vehicle(_weight),tonnage(_tonnage){}
+		void showMe(){
+			cout << "I am a  boat , my weight is " << weight << endl;
+		}
 };
-boat::boat(int _weight, float _tonnage):vehicle(_weight),tonnage(_tonnage){}
-void boat::showMe()
-{
-	cout << "I am a  boat , my weight is " << weight << endl;
+
+class amphibicar:public boat,public car{
+	public:
+		void showMe(){
+			cout << "I am a amphibicar , my weight is " << weight << endl;
+		}
+		amphibicar(int _weight,int _aird,float _tonnage):vehicle(_weight),car(_weight,_aird),boat(_weight,_tonnage){}
+};
+
+int main(){
+	amphibicar a(10,20,30);
+	a.showMe();
+	return 0;
 }
