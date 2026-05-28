@@ -30,18 +30,24 @@ public:
 };
 int main(){
 	cout<<"Please chose a person (1:student 2:teacher) :"<<endl;
-	char option;cin>>option;
-	person * p;
-	cout<<"Please input you name :"<<endl;
-	string name;cin>>name;
-	if(option=='1'){
-		p=new student(name);
-		p->eat();
-	}else if(option=='2'){
-		p=new teacher(name);
-		p->eat();
-	}else{
-		cout<<"Invaid Option! Please Input Again."<<endl;
+	char option;
+	while(cin>>option){
+		if(option!='1'&&option!='2'){
+			cout<<"Invaid Option! Please Input Again."<<endl;
+			
+		}else{
+			person * p;
+			cout<<"Please input you name :"<<endl;
+			string name;cin>>name;
+			if(option=='1'){
+				p=new student(name);
+				p->eat();
+			}else if(option=='2'){
+				p=new teacher(name);
+				p->eat();
+			}
+		}
 	}
+		
 	return 0;
 }
