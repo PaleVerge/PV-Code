@@ -18,6 +18,7 @@ double minElement(double a[],int n){
 	}
 	return min_ele;
 }
+
 int main(){
 	int m,n;
 	

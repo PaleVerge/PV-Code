@@ -1,7 +1,9 @@
-#include <bits/stdc++.h>
+#include <iostream>
 using namespace std;
+
 const int N=11;
 string s[N];
+
 int main(){
 	int n;cin>>n;
 	cin.ignore();

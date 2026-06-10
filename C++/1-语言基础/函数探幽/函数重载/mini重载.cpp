@@ -1,14 +1,15 @@
-#include <bits/stdc++.h>
+#include <iostream>
+#include <string>
 
 using namespace std;
 
-int mini(int a,int b){
+int mini(const int a,const int b){
 	return (a<b)?a:b;
 }
-double mini(double a,double b){
+double mini(const double a,const double b){
 	return (a<b)?a:b;
 }
-string mini(string a,string b){
+string mini(string &a,string &b){
 	return (a<b)?a:b;
 }
 int main(){

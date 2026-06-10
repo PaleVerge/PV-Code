@@ -1,12 +1,13 @@
-#include <bits/stdc++.h>
+#include <iostream>
 using namespace std;
-int cube(int a){
+
+int cube(const int a){
 	return a*a*a;
 }
-double cube(double a){
+double cube(const double a){
 	return a*a*a;
 }
-string cube(string s){
+string cube(const string s){
 	return s+s+s;
 }
 int main(){
