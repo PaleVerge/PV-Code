@@ -5,6 +5,7 @@
 #include <fstream>
 #include <string>
 using namespace std;
+
 int main(){
     fstream file("test.txt");
     if (file.bad()){

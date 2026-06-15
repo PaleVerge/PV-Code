@@ -3,9 +3,11 @@
 #include <iomanip>
 #include <string>
 using namespace std;
+
 int f(int a,int b=4){
 	return a+b;
 }
+
 int main(){
 //	char str[20];
 //	string s;

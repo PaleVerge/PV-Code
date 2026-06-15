@@ -2,25 +2,26 @@
 // Created by whip on 2026/6/4.
 //
 #include <iostream>
-#include <string>
 using namespace std;
+
 template <class T>
 class Array{
 private:
     T *data;
     int num;
 public:
-    Array(int n){
-        data=new T[n];
+    //合并默认构造函数和带参构造函数
+    Array(int n=0){
+        data=n>0?(new T[n]):nullptr;
         num=n;
     }
     ~Array(){
         delete []data;
     }
-    int sizeOfArray(){
+    int sizeOfArray()const{
         return num;
     }
-    void display(){
+    void display()const {
         for (int i=0;i<num;++i){
             cout<<data[i]<<' ';
         }
@@ -31,6 +32,7 @@ public:
         }
     }
 };
+
 int main(){
     int choice, n;
     cin >> choice;
