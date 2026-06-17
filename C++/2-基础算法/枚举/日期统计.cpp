@@ -34,6 +34,7 @@ int main(){
     for (int i=1;i<=12;++i){
         for (int j=1;j<=dayInMonth[i];++j){
             vector<int> target={2,0,2,3,i/10,i%10,j/10,j%10};
+            //下或cnt+=submatch(target)
             if (submatch(target)){
                 cnt++;
             }
