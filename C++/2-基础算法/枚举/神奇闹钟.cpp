@@ -3,7 +3,6 @@
 //
 #include <iostream>
 #include <iomanip>
-#include <math.h>
 #include <vector>
 using namespace std;
 vector<int> dayInMonth={0,31,28,31,30,31,30,31,31,30,31,30,31};
