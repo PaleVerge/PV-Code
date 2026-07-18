@@ -1,26 +1,28 @@
 //
 // Created by ritno on 2026/5/11.
 //
-//
-// Created by ritno on 2026/5/11.
-//
+
 #include <iostream>
 #include <iomanip>
 using namespace std;
+
 class complex{
 private:
     double real;
     double imag;
+    //求复数模的大小
     double mod(double _real,double _imag){
         return _real*_real+_imag*_imag;
     }
 public:
+    //使用友元重载流式运算符
     friend istream& operator>>(istream& is,complex &m){
         char pos,i;
         cin>>m.real>>pos>>m.imag>>i;
         if (pos=='-') m.imag=-m.imag;
         return is;
     }
+    //使用友元重载流式运算符
     friend ostream& operator<<(ostream& os,complex &m){
         if (m.imag==0)
             os<<fixed<<setprecision(2)<<m.real<<endl;
@@ -28,16 +30,18 @@ public:
             os<<fixed<<setprecision(2)<<m.real<<showpos<<m.imag<<'i'<<endl;
         return os;
     }
+    //设置函数
     void setReal(double realVal){
         real=realVal;
     }
     void setImag(double imagVal){
         imag=imagVal;
     }
-    double getReal(double realVal){
+    //取值函数（用于非友元实现重载）
+    double getReal(){
         return real;
     }
-    double getImag(double imagVal){
+    double getImag(){
         return imag;
     }
     complex operator+(complex c){

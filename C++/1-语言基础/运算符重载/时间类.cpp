@@ -62,6 +62,7 @@ public:
         }
         return tmp;
     }
+    //一次性减完
     time24 operator-(int sec)const{
         time24 tmp;
         tmp.second=second-sec;
@@ -86,10 +87,12 @@ public:
         }
         return false;
     }
+    //++a，返回值可以加引用
     time24 operator++(){
         (*this)=(*this)+1;
         return *this;
     }
+    //a++
     time24 operator++(int t){
         time24 tmp=(*this);
         (*this)=(*this)+1;
@@ -105,6 +108,7 @@ public:
     }
 
 };
+//秒+time24
 time24 operator+(int secs,const time24 &t){
     return t+secs;
 }
