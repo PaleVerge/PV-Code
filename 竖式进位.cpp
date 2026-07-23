@@ -1,13 +1,19 @@
 //
 // Created by whip on 2026/7/19.
 //
-#include <iostream>
-#include <string>
-#include <algorithm>
+#include <bits/stdc++.h>
+#define ll long long
+#define endl '\n'
 
 using namespace std;
 
-int main() {
+const int N=1e10+10;
+const int INF=1e12+10;
+const int MOD=1e9+7;
+void init(){
+
+}
+void solve(){
     string s1,s2;cin>>s1>>s2;
 
     int p1=s1.find('.');
@@ -24,9 +30,8 @@ int main() {
     while(xs2.length()<max_len)
         xs2+='0';
 
-    max_len=max(zs1.length(),zs2.length());
-    while(zs1.length()<max_len)zs1='0'+zs1;
-    while(zs2.length()<max_len)zs2='0'+zs2;
+    while(zs1.length()<zs2.length())zs1='0'+zs1;
+    while(zs2.length()<zs1.length())zs2='0'+zs2;
 
     string str1=zs1+xs1;
     string str2=zs2+xs2;
@@ -47,6 +52,13 @@ int main() {
     }
 
     cout<<res<<endl;
-
+}
+int main() {
+    init();
+    ios::sync_with_stdio(0),cin.tie(0),cout.tie(0);
+    int t=1;
+    while (t--){
+        solve();
+    }
     return 0;
 }
