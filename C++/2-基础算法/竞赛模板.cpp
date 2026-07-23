@@ -5,7 +5,7 @@
 // Created by whip on 2026/7/19.
 //
 #include <bits/stdc++.h>
-#define ll  long long
+#define int  long long
 
 #define endl '\n'
 
@@ -20,10 +20,10 @@ void init(){
 void solve(){
 
 }
-int main(){
+signed main(){
     init();
     ios::sync_with_stdio(0),cin.tie(0),cout.tie(0);
-    int t=1;
+    int t;cin>>t;
     while (t--){
         solve();
     }
